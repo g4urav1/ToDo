@@ -6,26 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 </head>
 
 <body>
-    
-    
-    
-    <main id="container">
-        <ul>
-            <li>Signup</li>
-            <li>Login</li>
+
+
+
+    <main id="container" class="w-1/2 h-screen mx-auto flex flex-col justify-center  items-center ">
+        <ul class="text-white/70 space-x-10 text-lg m-2">
+            <span class="active">Signup</span>
+            <span>Login</span>
         </ul>
-        <div id="signup">
-            <input type="text" placeholder="Enter Name" id="name">
-            <input type="text" placeholder="Enter Email" id="mail">
-            <input type="password" placeholder="Enter Password" id="pass">
-            <input type="text" placeholder="Enter Phone number" id="phone">
-            <button id="signup">Sign Up</button>
+        <div id="signup" class="space-y-3 hidden  flex-col justify-center  items-center ">
+            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder="Enter Name"
+                id="name">
+            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder="Enter Email"
+                id="mail">
+
+            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="password"
+                placeholder="Enter Password" id="pass">
+
+
+            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text"
+                placeholder="Enter Phone number" id="phone">
+            <button
+                class="px-4 py-2 m-2 border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[16px] font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
+                Sign Up
+            </button>
         </div>
-        <div id="login">
-            
+
+
+        <div id="login" class="space-y-3 flex flex-col justify-center  items-center">
+
+            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder="Enter Email"
+                id="mail">
+
+            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="password"
+                placeholder="Enter Password" id="pass">
+                <div>
+            <button
+                class="px-4 py-2 m-2 border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[16px] font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
+                Login
+            </button>
+            <button
+                class="px-4 py-2 m-2 border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[16px] font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
+                Reset Password
+            </button></div>
+
         </div>
     </main>
 </body>
