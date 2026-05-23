@@ -1,0 +1,26 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "My first github repository\r In this I have Created A ToDo list web for users using Html Css And Js \r using Backend to save data",
+  "main": "post.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g4urav1/todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/g4urav1/todo/issues"
+  },
+  "homepage": "https://github.com/g4urav1/todo#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "fs": "^0.0.1-security",
+    "nodemailer": "^8.0.7"
+  }
+}
