@@ -14,49 +14,127 @@
 
 
 
-    <main id="container" class="w-1/2 h-screen mx-auto flex flex-col justify-center  items-center ">
-        <ul class="text-white/70 space-x-10 text-lg m-2">
+    <main id="container" class="w-3/4 md:w-1/2 h-screen mx-auto flex flex-col justify-center  items-center ">
+        <div class="tabs flex justify-around w-4/5 text-lg m-2">
             <span class="active">Signup</span>
             <span>Login</span>
-        </ul>
-        <div id="signup" class="space-y-3 hidden  flex-col justify-center  items-center ">
-            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder="Enter Name"
-                id="name">
-            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder="Enter Email"
-                id="mail">
-
-            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="password"
-                placeholder="Enter Password" id="pass">
-
-
-            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text"
-                placeholder="Enter Phone number" id="phone">
-            <button
-                class="px-4 py-2 m-2 border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[16px] font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
+        </div>
+        <form id="signup" class="space-y-5 flex flex-col justify-center  items-center w-4/5 ">
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder=" "
+                    id="name">
+                <label class="absolute text-white/70 left-2 top-3" for="name">Name</label>
+            </div>
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white" type="email" placeholder=" "
+                    id="signup-mail">
+                <label class="absolute text-white/70 left-2 top-3" for="signup-mail">Email</label>
+            </div>
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white" type="password" placeholder=" "
+                    id="signup-pass">
+                <label class="absolute text-white/70 left-2 top-3" for="signup-pass">Password</label>
+            </div>
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder=" "
+                    id="phone">
+                <label class="absolute text-white/70 left-2 top-3" for="phone">Phone Number</label>
+            </div>
+            <button type="button"
+                class="px-4 py-2 m-2 w-full border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-sm cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
                 Sign Up
             </button>
+        </form>
+         
+        <div id="overlay" class="inset-0 hidden absolute bg-black/40 backdrop-blur-sm z-0"></div>
+
+        <div id="signup-confirmed"
+            class=" p-10 hidden flex-col gap-5 rounded-2xl items-center absolute bg-gradient-to-br from-[#111827] to-[#1e1b4b] z-10">
+            <p class="">Signed up successfully</p>
+            <div class="space-x-4">
+                <button id="goto-login" class=" bg-gradient-to-br from-indigo-500 to-violet-500 px-2 py-1 rounded-2xl">
+                    Go To Login Page
+                </button>
+                <button id="back-btn" class="px-2 py-1 rounded-2xl bg-gradient-to-br from-indigo-500  to-pink-500">Go
+                    Back
+                </button>
+            </div>
         </div>
 
+        <form id="login" class="space-y-5 hidden flex-col justify-center  items-center w-4/5">
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white" type="email" placeholder=" "
+                    id="login-mail">
+                <label class="absolute text-white/70 left-2 top-3" for="login-mail">Email</label>
+            </div>
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white" type="password" placeholder=" "
+                    id="login-pass">
+                <label class="absolute text-white/70 left-2 top-3" for="login-pass">Password</label>
+            </div>
+            <div class="w-full flex">
+                <button type="button"
+                    class="px-4 py-2 m-2 w-2/5 border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-sm cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
+                    Login
+                </button>
+                <button type="button"
+                    class="px-4 py-2 m-2 w-3/5 border-none rounded-[14px] bg-gradient-to-br from-indigo-500  to-pink-500 text-white text-sm cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(192,132,252,0.4)]">
+                    Reset Password
+                </button>
+            </div>
+        </form>
 
-        <div id="login" class="space-y-3 flex flex-col justify-center  items-center">
+        <form id="reset-page" class="space-y-5 hidden flex-col justify-center items-center w-4/5">
 
-            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder="Enter Email"
-                id="mail">
-
-            <input class="block border border-gray-600 rounded-lg p-2 text-white" type="password"
-                placeholder="Enter Password" id="pass">
-                <div>
-            <button
-                class="px-4 py-2 m-2 border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[16px] font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
-                Login
-            </button>
-            <button
-                class="px-4 py-2 m-2 border-none rounded-[14px] bg-gradient-to-br from-indigo-500 to-violet-500 text-white text-[16px] font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_20px_rgba(99,102,241,0.4)]">
+            <h1 class="text-2xl text-white font-bold">
                 Reset Password
-            </button></div>
+            </h1>
 
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white w-full bg-transparent" type="email"
+                    placeholder=" " id="reset-email">
+
+                <label class="absolute text-white/70 left-2 top-3" for="reset-email">
+                    Email
+                </label>
+            </div>
+
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white w-full bg-transparent" type="text"
+                    placeholder=" " id="reset-otp">
+
+                <label class="absolute text-white/70 left-2 top-3" for="reset-otp">
+                    OTP
+                </label>
+            </div>
+
+            <div class="w-full relative">
+                <input class="block border border-gray-600 rounded-lg p-2 text-white w-full bg-transparent"
+                    type="password" placeholder=" " id="new-password">
+
+                <label class="absolute text-white/70 left-2 top-3" for="new-password">
+                    New Password
+                </label>
+            </div>
+
+            <button type="button" id="reset-password-btn" class="px-4 py-2 w-full rounded-[14px]
+        bg-gradient-to-br from-indigo-500 to-pink-500
+        text-white">
+                Change Password
+            </button>
+
+            <button type="button" id="back-login" class="text-white/70">
+                Back To Login
+            </button>
+
+        </form>
+
+        <div class="dashboard">
         </div>
     </main>
+
+
 </body>
+<script src="script.js"></script>
 
 </html>

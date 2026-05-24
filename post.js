@@ -15,10 +15,10 @@ app.use(express.json())
 const cors = require("cors");
 app.use(cors());
 
-app.use((req, res, next) => {
-    req.body.middleware = "this line is added using middleware"
-    next()
-})
+// app.use((req, res, next) => {
+//     req.body.middleware = "this line is added using middleware"
+//     next()
+// })
 
 app.post("/signup", async (req, res) => {
   try {
@@ -182,15 +182,15 @@ app.post("/forget_password", async (req, res) => {
         .catch((err) => console.log(err))
 
 
-      const data = await fetch("https://2factor.in/API/V1/1219c576-5337-11f1-9800-0200cd936042/SMS/+91" + phone + "/" + ExistingUser.OTP + "/" + "OTP_SENDER")
-      const response = await data.json()
+      // const data = await fetch("https://2factor.in/API/V1/1219c576-5337-11f1-9800-0200cd936042/SMS/+91" + phone + "/" + ExistingUser.OTP + "/" + "OTP_SENDER")
+      // const response = await data.json()
 
 
       res.json(
         {
           "Email": ExistingUser.Email,
           "OTP": ExistingUser.OTP,
-          response
+          // response
         }
       )
 
