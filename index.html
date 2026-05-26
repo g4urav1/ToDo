@@ -19,9 +19,9 @@
             ToDo
         </div>
 
-        <ul class="tabs flex gap-10 text-md">
-            <li class="active cursor-pointer">Sign Up</li>
-            <li class="cursor-pointer">Log in</li>
+        <ul class="flex gap-10 text-md">
+            <li class="tab active cursor-pointer">Sign Up</li>
+            <li class="tab cursor-pointer">Log in</li>
         </ul>
 
     </nav>
@@ -35,7 +35,7 @@
 
         <ul class="dash-tab flex gap-10 text-md">
             <li class="active cursor-pointer">Mail</li>
-            <li class="cursor-pointer">Log out</li>
+            <li id="logout" class="cursor-pointer">Log out</li>
         </ul>
 
     </nav>
@@ -45,7 +45,7 @@
         <div class="bg-pink-blur"></div>
     </div>
     <main id="container"
-        class="hidden w-screen px-1 md:px-0 md:w-1/2 h-[calc(100vh-70px)] mx-auto flex-col justify-center">
+        class="flex w-screen px-1 md:px-0 md:w-1/2 h-[calc(100vh-70px)] mx-auto flex-col justify-center items-center">
         <form id="signup" class="space-y-5 flex flex-col justify-center  items-center w-4/5 ">
             <div class="w-full relative">
                 <input class="block border border-gray-600 rounded-lg p-2 text-white" type="text" placeholder=" "
@@ -158,8 +158,8 @@
 
     </main>
 
-    <div
-        class="dashboard w-screen md:w-1/2 h-[calc(100vh-70px)] mx-auto px-4 py-6 flex flex-col items-center text-white">
+    <div id="dashboard"
+        class=" w-screen md:w-1/2 h-[calc(100vh-70px)] mx-auto px-4 py-6 hidden flex-col items-center text-white">
 
 
         <h1 class="text-4xl font-bold mb-6 tracking-wide">
@@ -183,6 +183,38 @@
         <div class="w-full flex flex-col gap-4">
 
 
+            <div id="taskBox"
+                class="w-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-5 flex items-center justify-between shadow-xl">
+
+
+                <div class="flex items-center gap-4">
+
+
+                    <div id="taskId"
+                        class="w-12 h-12 rounded-full bg-violet-500/20 border border-violet-400 flex items-center justify-center text-violet-300 font-bold text-lg">
+                        1
+                    </div>
+
+
+                    <div>
+                        <h2 id="Task" class="text-xl font-semibold">
+                            Build ToDo Dashboard
+                        </h2>
+
+                        <p id="dateAdded" class="text-sm text-gray-300">
+                            DD/MM/YYYY
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <button id="remove"
+                    class="bg-red-500/20 hover:bg-red-500 px-4 py-2 rounded-xl border border-red-400 text-red-200 hover:text-white transition">
+                    Remove
+                </button>
+
+            </div>
             <div id="taskBox"
                 class="w-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-5 flex items-center justify-between shadow-xl">
 

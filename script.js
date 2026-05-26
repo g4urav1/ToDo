@@ -1,4 +1,4 @@
-const tabs = document.querySelectorAll("ul li");
+const tabs = document.querySelectorAll(".tab");
 const signup = document.getElementById("signup");
 const login = document.getElementById("login");
 const reset = document.getElementById("reset");
@@ -113,3 +113,41 @@ backToLogin.addEventListener("click",()=>{
     reset.classList.add("hidden");
     reset.classList.remove("flex");
 })
+
+const logout = document.getElementById("logout")
+const mainNav = document.getElementById("mainNav")
+const dashNav = document.getElementById("dashNav")
+const forms = document.getElementById("container")
+const dashboard = document.getElementById("dashboard")
+const loginBtb= document.getElementById("loginBtn")
+
+logout.addEventListener("click",()=>{
+    dashboard.classList.remove("flex")
+    dashboard.classList.add("hidden")
+
+    forms.classList.remove("hidden")
+    forms.classList.add("flex")
+
+    dashNav.classList.remove("flex")
+    dashNav.classList.add("hidden")
+
+    mainNav.classList.remove("hidden")
+    mainNav.classList.add("flex")
+})
+
+
+loginBtn.addEventListener("click",()=>{
+    dashboard.classList.add("flex")
+    dashboard.classList.remove("hidden")
+
+    forms.classList.add("hidden")
+    forms.classList.remove("flex")
+
+    dashNav.classList.add("flex")
+    dashNav.classList.remove("hidden")
+
+    mainNav.classList.add("hidden")
+    mainNav.classList.remove("flex")
+})
+
+
