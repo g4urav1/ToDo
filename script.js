@@ -32,49 +32,11 @@ tabs.forEach((tab, index) => {
     });
 });
 
-const overlay = document.getElementById("overlay");
-const signupmsg = document.getElementById("signup-confirmed");
-const back = document.getElementById("back-btn");
-const gotoLogin = document.getElementById("goto-login");
-
-// Hide Overlay
-overlay.addEventListener("click", () => {
-    signupmsg.classList.add("hidden");
-    signupmsg.classList.remove("flex");
-
-    overlay.classList.add("hidden");
-});
-
-//Back to signup
-back.addEventListener("click", () => {
-    signupmsg.classList.add("hidden");
-    signupmsg.classList.remove("flex");
-
-    overlay.classList.add("hidden");
-});
-
-//TO login
-gotoLogin.addEventListener("click", () => {
-
-    signupmsg.classList.add("hidden");
-    signupmsg.classList.remove("flex");
-
-    overlay.classList.add("hidden");
-
-    tabs.forEach(t => t.classList.remove("active"));
-    tabs[1].classList.add("active");
-
-    login.classList.remove("hidden");
-    login.classList.add("flex");
-
-    signup.classList.add("hidden");
-    signup.classList.remove("flex");
-
-});
 
 
-//Signup function
+// Signup function
 const signupBtn = document.getElementById("signupBtn");
+
 signupBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
@@ -83,15 +45,30 @@ signupBtn.addEventListener("click", async (e) => {
     const Password = document.getElementById("signup-pass").value.trim();
     const Phone = document.getElementById("phone").value.trim();
 
-    // if (!Name || !Email || !Password || !Phone) {
-    //     alert("Give all required data");
-    //     return;
-    // }
 
-    overlay.classList.remove("hidden");
-    signupmsg.classList.remove("hidden");
-    signupmsg.classList.add("flex");
+    if (!Name || !Email || !Password || !Phone) {
+        alert("Give all required data");
+        return;
+    }
 
+    try {
+
+        const response = await fetch("http://localhost:1111/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ Name, Email, Password, Phone })
+        });
+
+        const data = await response.json();
+
+        alert(data.Message);
+
+    } catch (error) {
+        console.log(error);
+        alert("Server Error");
+    }
 });
 
 //ResetPassword
@@ -106,7 +83,7 @@ resetBtn.addEventListener("click", () => {
 
 const backToLogin = document.getElementById("back-login")
 
-backToLogin.addEventListener("click",()=>{
+backToLogin.addEventListener("click", () => {
     login.classList.remove("hidden");
     login.classList.add("flex");
 
@@ -119,9 +96,9 @@ const mainNav = document.getElementById("mainNav")
 const dashNav = document.getElementById("dashNav")
 const forms = document.getElementById("container")
 const dashboard = document.getElementById("dashboard")
-const loginBtb= document.getElementById("loginBtn")
+const loginBtb = document.getElementById("loginBtn")
 
-logout.addEventListener("click",()=>{
+logout.addEventListener("click", () => {
     dashboard.classList.remove("flex")
     dashboard.classList.add("hidden")
 
@@ -136,7 +113,7 @@ logout.addEventListener("click",()=>{
 })
 
 
-loginBtn.addEventListener("click",()=>{
+loginBtn.addEventListener("click", () => {
     dashboard.classList.add("flex")
     dashboard.classList.remove("hidden")
 

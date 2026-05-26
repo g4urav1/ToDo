@@ -32,12 +32,29 @@ app.post("/signup", async (req, res) => {
       return
     }
     else {
-      users.push(NewUser)
-      const NewData = JSON.stringify(users, null, 2)
-      await fs.writeFile("./database/users.json", NewData)
-      res.json([{
-        "Message": "Signed Up Successfully"
-      }, { NewUser }])
+
+      const alreadyUser = users.find(
+        user => user.Email === NewUser.Email
+      );
+
+      if (alreadyUser) {
+
+        return res.json({
+          Message: "Email already exists"
+        });
+
+      }
+
+      users.push(NewUser);
+
+      const NewData = JSON.stringify(users, null, 2);
+
+      await fs.writeFile("./database/users.json", NewData);
+
+      res.json({
+        Message: "Signed Up Successfully"
+      });
+
     }
 
   } catch (error) {
@@ -278,9 +295,12 @@ app.post("/addtask", async (req, res) => {
 
     const today = new Date();
     const AddDate = `${String(today.getDate()).padStart(2, "0")}/${String(today.getMonth() + 1).padStart(2, "0")}/${today.getFullYear()}`;
-    ExistingUser.Tasks.push({
-      id: id, Task: givenTask, AddedDate: AddDate
+
+    const AddTime = today.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit"
     });
+    ExistingUser.Tasks.push({ id: id, Task: givenTask, AddedDate: AddDate, AddedTime: AddTime });
 
     await fs.writeFile(
       "./database/users.json",
@@ -353,8 +373,8 @@ app.post("/alltasks", async (req, res) => {
     }
 
     res.json({
-      "No of Tasks": ExistingUser.Tasks.length,
-      "TASKS": ExistingUser.Tasks
+      "No of Tasks": ExistingUser.Tasks ? ExistingUser.Tasks.length : 0,
+      "TASKS": ExistingUser.Tasks || []
     })
 
 

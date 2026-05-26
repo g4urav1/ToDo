@@ -75,21 +75,6 @@
             </button>
         </form>
 
-        <div id="overlay" class="inset-0 hidden absolute bg-black/40 backdrop-blur-sm z-0"></div>
-
-        <div id="signup-confirmed"
-            class=" p-10 hidden flex-col gap-5 rounded-2xl items-center absolute bg-gradient-to-br from-[#111827] to-[#1e1b4b] z-10">
-            <p class="">Signed up successfully</p>
-            <div class="space-x-4">
-                <button id="goto-login" class=" bg-gradient-to-br from-indigo-500 to-violet-500 px-2 py-1 rounded-2xl">
-                    Go To Login Page
-                </button>
-                <button id="back-btn" class="px-2 py-1 rounded-2xl bg-gradient-to-br from-indigo-500  to-pink-500">Go
-                    Back
-                </button>
-            </div>
-        </div>
-
         <form id="login" class="space-y-5 hidden flex-col justify-center  items-center w-4/5">
             <div class="w-full relative">
                 <input class="block border border-gray-600 rounded-lg p-2 text-white" type="email" placeholder=" "
@@ -149,7 +134,7 @@
             <button type="button" id="reset-pass-btn" class="px-4 py-2 w-full rounded-[14px]
         bg-gradient-to-br from-indigo-500 to-pink-500
         text-white">
-                Change Password
+                Send OTP
             </button>
 
             <button type="button" id="back-login" class="text-white/70">
@@ -182,73 +167,10 @@
         </div>
 
 
-        <div class="w-full flex flex-col gap-4">
+        <div id="taskContainer" class="w-full flex flex-col gap-4">
 
 
-            <div id="taskBox"
-                class="w-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-5 flex items-center justify-between shadow-xl">
-
-
-                <div class="flex items-center gap-4">
-
-
-                    <div id="taskId"
-                        class="w-12 h-12 rounded-full bg-violet-500/20 border border-violet-400 flex items-center justify-center text-violet-300 font-bold text-lg">
-                        1
-                    </div>
-
-
-                    <div>
-                        <h2 id="Task" class="text-xl font-semibold">
-                            Build ToDo Dashboard
-                        </h2>
-
-                        <p id="dateAdded" class="text-sm text-gray-300">
-                            DD/MM/YYYY
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <button id="remove"
-                    class="bg-red-500/20 hover:bg-red-500 px-4 py-2 rounded-xl border border-red-400 text-red-200 hover:text-white transition">
-                    Remove
-                </button>
-
-            </div>
-            <div id="taskBox"
-                class="w-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-5 flex items-center justify-between shadow-xl">
-
-
-                <div class="flex items-center gap-4">
-
-
-                    <div id="taskId"
-                        class="w-12 h-12 rounded-full bg-violet-500/20 border border-violet-400 flex items-center justify-center text-violet-300 font-bold text-lg">
-                        1
-                    </div>
-
-
-                    <div>
-                        <h2 id="Task" class="text-xl font-semibold">
-                            Build ToDo Dashboard
-                        </h2>
-
-                        <p id="dateAdded" class="text-sm text-gray-300">
-                            DD/MM/YYYY
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <button id="remove"
-                    class="bg-red-500/20 hover:bg-red-500 px-4 py-2 rounded-xl border border-red-400 text-red-200 hover:text-white transition">
-                    Remove
-                </button>
-
-            </div>
+            
 
         </div>
 
