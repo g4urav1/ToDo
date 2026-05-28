@@ -65,23 +65,48 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
 
-    const UsersData = await fs.readFile("./database/users.json", "utf-8")
+    const UsersData = await fs.readFile("./database/users.json", "utf-8");
 
-    const userArr = JSON.parse(UsersData)
+    const userArr = JSON.parse(UsersData);
 
-    const { Email, Password } = req.body
-    const ExistingUser = userArr.find(user => user.Email === Email && user.Password === Password)
+    const { Email, Password } = req.body;
 
-    if (ExistingUser) {
-      res.json({ "Message": "Logged In Successfully" })
-    } else {
-      res.json({ message: "User doesn't exist" })
+   
+    const ExistingUser = userArr.find(
+      user => user.Email === Email
+    );
+
+    if (!ExistingUser) {
+
+      return res.status(404).json({
+        Message: "Email doesn't exist"
+      });
+
     }
 
+    if (ExistingUser.Password !== Password) {
+
+      return res.status(401).json({
+        Message: "Wrong Password"
+      });
+
+    }
+
+
+    return res.status(200).json({
+      Message: "Logged In Successfully"
+    });
+
   } catch (error) {
-    console.log(error)
+
+    console.log(error);
+
+    return res.status(500).json({
+      Message: "Server Error"
+    });
+
   }
-})
+});
 
 app.post("/forget_password", async (req, res) => {
   try {
@@ -307,7 +332,7 @@ app.post("/addtask", async (req, res) => {
       JSON.stringify(UserArr, null, 2)
     );
 
-    res.json("Task Added");
+    res.json({Message:"Task Added"});
 
   } catch (error) {
     console.log(error);
@@ -369,7 +394,7 @@ app.post("/alltasks", async (req, res) => {
     const ExistingUser = UserArr.find(u => u.Email === Email && u.Password === Password)
 
     if (!ExistingUser) {
-      return res.json("User not found");
+      return res.status(404).json("User not found");
     }
 
     res.json({
