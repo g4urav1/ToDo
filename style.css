@@ -14,11 +14,11 @@ body {
         #0b1020;
     font-family: 'Poppins', sans-serif;
     color: white;
-  
+
     min-height: 100vh;
     overflow-x: hidden;
 
-   
+
 }
 
 nav {
@@ -35,31 +35,31 @@ nav {
 }
 
 
-  #UserMail {
-      position: relative;
-  }
+#UserMail {
+    position: relative;
+}
 
-    #UserMail::after {
-      content: attr(data-email);
-      position: absolute;
-      bottom: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 14px;
-      white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.3s ease;
-    }
+#UserMail::after {
+    content: attr(data-email);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
 
-    #UserMail:hover::after {
-      opacity: 1;
-      visibility: visible;
-    }
+#UserMail:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
 
 
 .tabs {
@@ -103,7 +103,7 @@ nav {
 input {
     width: 100%;
     padding: 14px;
-   background: rgba(17, 24, 39, 0.75);
+    background: rgba(17, 24, 39, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     color: white;
@@ -153,16 +153,17 @@ input:not(:placeholder-shown)+label {
     border-radius: 24px;
     padding: 40px;
     box-shadow:
-        0 0 0 1px rgba(255,255,255,0.03),
-        0 20px 80px rgba(0,0,0,0.45),
-        0 0 60px rgba(139,92,246,0.12);
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 20px 80px rgba(0, 0, 0, 0.45),
+        0 0 60px rgba(139, 92, 246, 0.12);
     transition: 0.4s ease;
 }
+
 .form:hover {
     transform: translateY(-3px);
     box-shadow:
-        0 25px 90px rgba(0,0,0,0.55),
-        0 0 80px rgba(139,92,246,0.18);
+        0 25px 90px rgba(0, 0, 0, 0.55),
+        0 0 80px rgba(139, 92, 246, 0.18);
 }
 
 
@@ -213,11 +214,8 @@ input:not(:placeholder-shown)+label {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-
-    background: rgba(255,255,255,0.05);
-
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-
     transition: 0.3s ease;
 }
 
@@ -237,4 +235,29 @@ input:not(:placeholder-shown)+label {
 
 .contact a:hover {
     transform: scale(1.2);
+}
+
+#taskContainer {
+    mask-image: linear-gradient(to bottom,
+            transparent,
+            black 10%,
+            black 95%,
+            transparent);
+}
+
+.task {
+    animation: fadeSlide .35s ease;
+    flex-shrink: 0;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }

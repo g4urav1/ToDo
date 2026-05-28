@@ -5,7 +5,7 @@ const login = document.getElementById("login");
 const reset = document.getElementById("reset");
 const signupBtn = document.getElementById("signupBtn");
 const loginBtn = document.getElementById("loginBtn");
-const resetBtn = document.getElementById("resetBtn");
+const resetBtn = document.getElementById("toResetPage");
 const backToLogin = document.getElementById("back-login");
 const logout = document.getElementById("logout");
 const mainNav = document.getElementById("mainNav");
@@ -98,10 +98,8 @@ async function renderTasks(tasks) {
 
         return `
                 <div
-    class="task bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl 
-    px-5 py-4 flex flex-col sm:flex-row sm:items-center 
-    justify-between gap-4 hover:bg-white/15 transition duration-300 
-    shadow-lg shadow-black/10">
+    class="task group relative bg-white/10 backdrop-blur-md  border border-white/20 rounded-2xl px-5 py-4  flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/15 hover:border-violet-400/30 
+    hover:shadow-violet-500/10 transition-all duration-300 ease-out shadow-lg shadow-black/10 hover:-translate-y-1 overflow-hidden snap-start">
 
     <div class="flex flex-col gap-1">
 
@@ -128,10 +126,14 @@ async function renderTasks(tasks) {
 
     </div>
 
-    <button
-        class="remove-task w-full sm:w-auto bg-red-500/20 hover:bg-red-500 
-        text-red-300 hover:text-white px-4 py-2 rounded-xl 
-        transition duration-300 font-medium">
+    <button  data-id="${task.id}"
+        class="RemoveTaskBtn w-full sm:w-auto
+bg-red-500/20 hover:bg-red-500
+text-red-300 hover:text-white
+px-4 py-2 rounded-xl
+transition-all duration-300
+font-medium active:scale-95
+hover:shadow-lg hover:shadow-red-500/30">
         Remove
     </button>
 
@@ -141,9 +143,6 @@ async function renderTasks(tasks) {
     }).join("");
 
 }
-
-
-
 
 
 signupBtn.addEventListener("click", async (e) => {
@@ -175,13 +174,16 @@ signupBtn.addEventListener("click", async (e) => {
 
         alert(data.Message);
 
+        document.getElementById("name").value = ""
+        document.getElementById("signup-mail").value = ""
+        document.getElementById("signup-pass").value = ""
+        document.getElementById("phone").value = ""
+
     } catch (error) {
         console.log(error);
         alert("Server Error");
     }
 });
-
-
 
 
 loginBtn.addEventListener("click", async (e) => {
@@ -245,14 +247,11 @@ loginBtn.addEventListener("click", async (e) => {
 });
 
 
-
-
 resetBtn.addEventListener("click", () => {
     login.classList.add("hidden")
     reset.classList.remove("hidden")
     reset.classList.add("flex")
 })
-
 
 
 backToLogin.addEventListener("click", () => {
@@ -262,9 +261,6 @@ backToLogin.addEventListener("click", () => {
     reset.classList.add("hidden");
     reset.classList.remove("flex");
 })
-
-
-
 
 
 logout.addEventListener("click", () => {
@@ -297,11 +293,7 @@ logout.addEventListener("click", () => {
 })
 
 
-
-
-
 addTaskBtn.addEventListener("click", async (e) => {
-
     e.preventDefault()
 
 
@@ -346,6 +338,58 @@ addTaskBtn.addEventListener("click", async (e) => {
 })
 
 
+document.addEventListener("click", async (e) => {
+
+    if (!e.target.classList.contains("RemoveTaskBtn")) {
+        return
+    }
+
+    e.preventDefault();
+
+    const btn = e.target;
+
+    const id = btn.dataset.id;
+
+    const Email = localStorage.getItem("Email");
+    const Password = localStorage.getItem("Password");
+
+    try {
+
+        const response = await fetch("http://localhost:1111/removetask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                Email,
+                Password,
+                id
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.Message || "Failed");
+            return;
+        }
+
+        alert("Task Removed");
+
+        btn.closest(".task").remove();
+
+        loadTask();
+
+    } catch (error) {
+
+        console.log(error);
+
+        alert("Server Error");
+
+    }
+
+});
 
 
 

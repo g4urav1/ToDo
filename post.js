@@ -325,7 +325,7 @@ app.post("/addtask", async (req, res) => {
       hour: "2-digit",
       minute: "2-digit"
     });
-    ExistingUser.Tasks.push({ id: id, Task: givenTask, AddedDate: AddDate, AddedTime: AddTime });
+    ExistingUser.Tasks.unshift({ id: id, Task: givenTask, AddedDate: AddDate, AddedTime: AddTime });
 
     await fs.writeFile(
       "./database/users.json",
